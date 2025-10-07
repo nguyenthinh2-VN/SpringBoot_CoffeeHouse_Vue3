@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Configuration Files ###
+src/main/resources/config.properties
+*.env
+.env.*
