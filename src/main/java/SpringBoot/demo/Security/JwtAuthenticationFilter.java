@@ -131,7 +131,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return uri.startsWith("/auth/register") ||
                uri.startsWith("/auth/login") ||
                uri.startsWith("/auth/refresh") ||
-               uri.startsWith("/products");
+               uri.startsWith("/products") ||
+               uri.startsWith("/swagger-ui") ||
+               uri.startsWith("/v3/api-docs");
     }
 
     // Gửi error response với format JSON

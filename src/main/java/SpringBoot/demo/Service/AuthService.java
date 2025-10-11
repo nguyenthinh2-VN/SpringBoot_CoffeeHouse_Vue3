@@ -211,4 +211,5 @@ public class AuthService implements UserDetailsService {
     public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
 }

@@ -3,6 +3,9 @@ package SpringBoot.demo.Controller;
 import SpringBoot.demo.DTO.*;
 import SpringBoot.demo.Security.JwtUtil;
 import SpringBoot.demo.Service.AuthService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Authentication", description = "APIs quản lý xác thực và phân quyền")
 public class AuthController {
 
     @Autowired
@@ -23,6 +27,12 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     // POST /auth/register - Đăng ký user mới
+    @Operation(summary = "Đăng ký tài khoản", description = "Tạo tài khoản user mới với role USER")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Đăng ký thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Dữ liệu không hợp lệ"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Username hoặc email đã tồn tại")
+    })
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<UserResponse>> register(@Valid @RequestBody RegisterRequest request) {
         try {
@@ -161,4 +171,5 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
+
 }
