@@ -1,14 +1,12 @@
 package SpringBoot.demo.Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class MessageModel {
     public String text;
     public String author;
 
-    public MessageModel(String text, String author) {
-        this.text = text;
-        this.author = author;
-    }
 }

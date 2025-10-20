@@ -4,12 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
     @Id
@@ -19,18 +23,4 @@ public class Product {
     private double gia;
     private int category_id;
     private String hinh;
-
-    // Constructors
-    public Product() {
-    }
-
-    public Product(int id, String tensp, double gia, int category_id, String hinh) {
-        this.id = id;
-        this.tensp = tensp;
-        this.gia = gia;
-        this.category_id = category_id;
-        this.hinh = hinh;
-    }
-
-
 }

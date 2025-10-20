@@ -54,6 +54,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/register", "/auth/login", "/auth/refresh", "/auth/validate").permitAll()
                         .requestMatchers("/products/**").permitAll()
                         .requestMatchers("/error").permitAll() // Allow error endpoint
+
                         
                         // Swagger UI endpoints (chỉ cho development)
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()

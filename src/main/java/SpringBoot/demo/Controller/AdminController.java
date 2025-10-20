@@ -3,8 +3,12 @@ package SpringBoot.demo.Controller;
 import SpringBoot.demo.DTO.ApiResponse;
 import SpringBoot.demo.DTO.ProductRequest;
 import SpringBoot.demo.DTO.ProductResponse;
+import SpringBoot.demo.DTO.ProductSearchCriteria;
+import SpringBoot.demo.Model.PaginationResponse;
+import SpringBoot.demo.Model.Product;
 import SpringBoot.demo.Model.User;
 import SpringBoot.demo.Service.AdminService;
+import SpringBoot.demo.Service.ProductSearchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -26,6 +30,9 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+    
+    @Autowired
+    private ProductSearchService productSearchService;
 
     // POST /admin/products - Thêm sản phẩm mới (chỉ ADMIN)
     @Operation(summary = "Thêm sản phẩm mới", description = "Tạo sản phẩm mới (chỉ Admin)")
@@ -127,6 +134,77 @@ public class AdminController {
             
         } catch (Exception e) {
             ApiResponse<ProductResponse> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
+
+    // GET /admin/products - Tìm kiếm và lọc sản phẩm với phân trang (chỉ ADMIN)
+    @Operation(summary = "Tìm kiếm sản phẩm", description = "Tìm kiếm và lọc sản phẩm với phân trang (chỉ Admin)")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Tìm kiếm thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Không có quyền Admin")
+    })
+    @GetMapping("/products")
+    public ResponseEntity<ApiResponse<PaginationResponse<Product>>> searchProducts(
+            @Parameter(description = "Từ khóa tìm kiếm") @RequestParam(required = false) String keyword,
+            @Parameter(description = "ID danh mục") @RequestParam(required = false) Integer categoryId,
+            @Parameter(description = "Giá tối thiểu") @RequestParam(required = false) Double minPrice,
+            @Parameter(description = "Giá tối đa") @RequestParam(required = false) Double maxPrice,
+            @Parameter(description = "Loại sắp xếp: popular, newest, price_asc, price_desc, name_asc, name_desc") 
+            @RequestParam(defaultValue = "newest") String sortType,
+            @Parameter(description = "Số trang (bắt đầu từ 0)") @RequestParam(defaultValue = "0") int page,
+            @Parameter(description = "Số lượng item trên mỗi trang") @RequestParam(defaultValue = "10") int size) {
+        
+        try {
+            // Kiểm tra user có role ADMIN không
+            if (!isUserAdmin()) {
+                ApiResponse<PaginationResponse<Product>> errorResponse = ApiResponse.error("Bạn không có quyền thực hiện thao tác này");
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
+            }
+
+            // Tạo criteria tìm kiếm
+            ProductSearchCriteria criteria = new ProductSearchCriteria();
+            criteria.setKeyword(keyword);
+            criteria.setCategoryId(categoryId);
+            criteria.setMinPrice(minPrice);
+            criteria.setMaxPrice(maxPrice);
+            criteria.setSortType(SpringBoot.demo.Enum.SortType.fromValue(sortType));
+            criteria.setPage(page);
+            criteria.setSize(size);
+
+            // Thực hiện tìm kiếm
+            PaginationResponse<Product> result = productSearchService.searchProducts(criteria);
+            ApiResponse<PaginationResponse<Product>> response = ApiResponse.success(result);
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            ApiResponse<PaginationResponse<Product>> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
+
+    // GET /admin/products/search - Tìm kiếm nâng cao (chỉ ADMIN)
+    @Operation(summary = "Tìm kiếm sản phẩm nâng cao", description = "Tìm kiếm sản phẩm với body request (chỉ Admin)")
+    @PostMapping("/products/search")
+    public ResponseEntity<ApiResponse<PaginationResponse<Product>>> advancedSearchProducts(
+            @Valid @RequestBody ProductSearchCriteria criteria) {
+        
+        try {
+            // Kiểm tra user có role ADMIN không
+            if (!isUserAdmin()) {
+                ApiResponse<PaginationResponse<Product>> errorResponse = ApiResponse.error("Bạn không có quyền thực hiện thao tác này");
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
+            }
+
+            // Thực hiện tìm kiếm
+            PaginationResponse<Product> result = productSearchService.searchProducts(criteria);
+            ApiResponse<PaginationResponse<Product>> response = ApiResponse.success(result);
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            ApiResponse<PaginationResponse<Product>> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }

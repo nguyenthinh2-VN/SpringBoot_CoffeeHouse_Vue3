@@ -51,6 +51,7 @@ public class AuthController {
     }
 
     // POST /auth/login - Đăng nhập
+    @Operation(summary = "Đăng nhập tài khoản")
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         try {
