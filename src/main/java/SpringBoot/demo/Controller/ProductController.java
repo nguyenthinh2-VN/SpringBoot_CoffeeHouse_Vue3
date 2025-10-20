@@ -2,10 +2,12 @@ package SpringBoot.demo.Controller;
 
 import SpringBoot.demo.DTO.ApiResponse;
 import SpringBoot.demo.DTO.ProductSearchCriteria;
+import SpringBoot.demo.DTO.ProductDetailResponse;
 import SpringBoot.demo.Model.Product;
 import SpringBoot.demo.Model.PaginationResponse;
 import SpringBoot.demo.Repository.ProductRepository;
 import SpringBoot.demo.Service.ProductSearchService;
+import SpringBoot.demo.Service.ProductDetailService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -30,6 +32,9 @@ public class ProductController {
     
     @Autowired
     private ProductSearchService productSearchService;
+    
+    @Autowired
+    private ProductDetailService productDetailService;
 
     // GET /products - Lấy tất cả sản phẩm với phân trang (công khai)
     @Operation(summary = "Lấy danh sách sản phẩm", description = "Lấy tất cả sản phẩm với phân trang (không cần đăng nhập)")
@@ -155,10 +160,37 @@ public class ProductController {
         }
     }
 
-    // GET /products/{id} - Lấy chi tiết sản phẩm
-    @Operation(summary = "Lấy chi tiết sản phẩm", description = "Lấy thông tin chi tiết của một sản phẩm")
+    // GET /products/{id} - Lấy chi tiết sản phẩm với các tùy chọn
+    @Operation(summary = "Lấy chi tiết sản phẩm", description = "Lấy thông tin chi tiết sản phẩm với các tùy chọn theo category")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Lấy chi tiết thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Không tìm thấy sản phẩm")
+    })
     @GetMapping("/products/{id}")
-    public ResponseEntity<ApiResponse<Product>> getProductById(
+    public ResponseEntity<ApiResponse<ProductDetailResponse>> getProductDetail(
+            @Parameter(description = "ID sản phẩm") @PathVariable Integer id) {
+        
+        try {
+            ProductDetailResponse productDetail = productDetailService.getProductDetail(id);
+            
+            if (productDetail != null) {
+                ApiResponse<ProductDetailResponse> response = ApiResponse.success(productDetail);
+                return ResponseEntity.ok(response);
+            } else {
+                ApiResponse<ProductDetailResponse> response = ApiResponse.error("Không tìm thấy sản phẩm với ID: " + id);
+                return ResponseEntity.status(404).body(response);
+            }
+            
+        } catch (Exception e) {
+            ApiResponse<ProductDetailResponse> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(500).body(errorResponse);
+        }
+    }
+
+    // GET /products/{id}/basic - Lấy thông tin cơ bản sản phẩm (không có options)
+    @Operation(summary = "Lấy thông tin cơ bản sản phẩm", description = "Lấy thông tin cơ bản của sản phẩm (không bao gồm options)")
+    @GetMapping("/products/{id}/basic")
+    public ResponseEntity<ApiResponse<Product>> getProductBasicInfo(
             @Parameter(description = "ID sản phẩm") @PathVariable Integer id) {
         
         try {
