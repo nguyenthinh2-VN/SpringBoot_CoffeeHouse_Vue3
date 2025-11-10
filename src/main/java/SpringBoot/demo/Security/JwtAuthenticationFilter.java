@@ -1,6 +1,6 @@
 package SpringBoot.demo.Security;
 
-import SpringBoot.demo.Service.AuthService;
+import SpringBoot.demo.Service.Auth.AuthService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

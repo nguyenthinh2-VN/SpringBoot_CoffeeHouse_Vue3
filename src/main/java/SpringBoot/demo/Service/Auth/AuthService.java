@@ -1,9 +1,9 @@
-package SpringBoot.demo.Service;
+package SpringBoot.demo.Service.Auth;
 
 import SpringBoot.demo.DTO.*;
 import SpringBoot.demo.Model.Role;
 import SpringBoot.demo.Model.User;
-import SpringBoot.demo.Repository.UserRepository;
+import SpringBoot.demo.Repository.User.UserRepository;
 import SpringBoot.demo.Security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,8 +1,12 @@
-package SpringBoot.demo.Service;
+package SpringBoot.demo.Service.Product;
 
 import SpringBoot.demo.DTO.ProductDetailResponse;
 import SpringBoot.demo.Model.*;
-import SpringBoot.demo.Repository.*;
+import SpringBoot.demo.Repository.Category.CategoryRepository;
+import SpringBoot.demo.Repository.Option.IceOptionRepository;
+import SpringBoot.demo.Repository.Option.SizeRepository;
+import SpringBoot.demo.Repository.Option.ToppingRepository;
+import SpringBoot.demo.Repository.Product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

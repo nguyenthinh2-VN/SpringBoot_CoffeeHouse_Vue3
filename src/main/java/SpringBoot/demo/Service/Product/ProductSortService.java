@@ -1,4 +1,4 @@
-package SpringBoot.demo.Service;
+package SpringBoot.demo.Service.Product;
 
 import SpringBoot.demo.Enum.SortType;
 import org.springframework.data.domain.Sort;

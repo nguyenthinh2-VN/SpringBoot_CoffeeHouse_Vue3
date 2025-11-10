@@ -1,4 +1,4 @@
-package SpringBoot.demo.Repository;
+package SpringBoot.demo.Repository.Option;
 
 import SpringBoot.demo.Model.Size;
 import org.springframework.data.jpa.repository.JpaRepository;

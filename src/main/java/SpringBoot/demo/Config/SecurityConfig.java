@@ -52,7 +52,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints
                         .requestMatchers("/auth/register", "/auth/login", "/auth/refresh", "/auth/validate").permitAll()
+                        .requestMatchers("/auth/forgot-password", "/auth/verify-otp", "/auth/reset-password").permitAll()
                         .requestMatchers("/products/**").permitAll()
+                        .requestMatchers("/categories/**").permitAll()
+                        .requestMatchers("/options/**").permitAll()
                         .requestMatchers("/error").permitAll() // Allow error endpoint
 
                         

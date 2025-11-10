@@ -1,9 +1,9 @@
-package SpringBoot.demo.Service;
+package SpringBoot.demo.Service.Product;
 
 import SpringBoot.demo.DTO.ProductSearchCriteria;
 import SpringBoot.demo.Model.PaginationResponse;
 import SpringBoot.demo.Model.Product;
-import SpringBoot.demo.Repository.ProductRepository;
+import SpringBoot.demo.Repository.Product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

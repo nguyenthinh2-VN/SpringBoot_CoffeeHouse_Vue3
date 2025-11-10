@@ -5,22 +5,19 @@ import SpringBoot.demo.DTO.ProductSearchCriteria;
 import SpringBoot.demo.DTO.ProductDetailResponse;
 import SpringBoot.demo.Model.Product;
 import SpringBoot.demo.Model.PaginationResponse;
-import SpringBoot.demo.Repository.ProductRepository;
-import SpringBoot.demo.Service.ProductSearchService;
-import SpringBoot.demo.Service.ProductDetailService;
+import SpringBoot.demo.Repository.Product.ProductRepository;
+import SpringBoot.demo.Service.Product.ProductSearchService;
+import SpringBoot.demo.Service.Product.ProductDetailService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController

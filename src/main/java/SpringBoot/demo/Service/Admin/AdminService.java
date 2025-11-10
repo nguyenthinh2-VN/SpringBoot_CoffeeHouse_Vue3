@@ -1,10 +1,10 @@
-package SpringBoot.demo.Service;
+package SpringBoot.demo.Service.Admin;
 
 import SpringBoot.demo.DTO.ApiResponse;
 import SpringBoot.demo.DTO.ProductRequest;
 import SpringBoot.demo.DTO.ProductResponse;
 import SpringBoot.demo.Model.Product;
-import SpringBoot.demo.Repository.ProductRepository;
+import SpringBoot.demo.Repository.Product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

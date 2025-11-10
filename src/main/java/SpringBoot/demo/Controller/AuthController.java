@@ -2,7 +2,8 @@ package SpringBoot.demo.Controller;
 
 import SpringBoot.demo.DTO.*;
 import SpringBoot.demo.Security.JwtUtil;
-import SpringBoot.demo.Service.AuthService;
+import SpringBoot.demo.Service.Auth.AuthService;
+import SpringBoot.demo.Service.PasswordResetService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,6 +26,9 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private PasswordResetService passwordResetService;
 
     // POST /auth/register - Đăng ký user mới
     @Operation(summary = "Đăng ký tài khoản", description = "Tạo tài khoản user mới với role USER")
@@ -165,6 +169,76 @@ public class AuthController {
             } else {
                 ApiResponse<String> errorResponse = ApiResponse.error(result.getMessage());
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+            }
+            
+        } catch (Exception e) {
+            ApiResponse<String> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
+
+    // POST /auth/forgot-password - Gửi mã OTP qua email
+    @Operation(summary = "Quên mật khẩu - Gửi OTP", description = "Gửi mã OTP đến email để đặt lại mật khẩu")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Gửi OTP thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Email không hợp lệ"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Email không tồn tại")
+    })
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ApiResponse<String>> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request) {
+        try {
+            ApiResponse<String> response = passwordResetService.sendOtp(request);
+            
+            if (response.isSuccess()) {
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
+            
+        } catch (Exception e) {
+            ApiResponse<String> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
+
+    // POST /auth/verify-otp - Xác minh mã OTP
+    @Operation(summary = "Xác minh mã OTP", description = "Kiểm tra mã OTP có hợp lệ không")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "OTP hợp lệ"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "OTP không hợp lệ hoặc đã hết hạn")
+    })
+    @PostMapping("/verify-otp")
+    public ResponseEntity<ApiResponse<String>> verifyOtp(@Valid @RequestBody VerifyOtpRequest request) {
+        try {
+            ApiResponse<String> response = passwordResetService.verifyOtp(request);
+            
+            if (response.isSuccess()) {
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
+            
+        } catch (Exception e) {
+            ApiResponse<String> errorResponse = ApiResponse.error("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
+
+    // POST /auth/reset-password - Đặt lại mật khẩu
+    @Operation(summary = "Đặt lại mật khẩu", description = "Đặt lại mật khẩu mới sau khi xác minh OTP")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Đặt lại mật khẩu thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "OTP không hợp lệ hoặc đã hết hạn")
+    })
+    @PostMapping("/reset-password")
+    public ResponseEntity<ApiResponse<String>> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
+        try {
+            ApiResponse<String> response = passwordResetService.resetPassword(request);
+            
+            if (response.isSuccess()) {
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
             }
             
         } catch (Exception e) {

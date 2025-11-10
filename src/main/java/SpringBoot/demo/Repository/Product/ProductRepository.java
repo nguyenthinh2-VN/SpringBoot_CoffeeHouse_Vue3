@@ -1,4 +1,4 @@
-package SpringBoot.demo.Repository;
+package SpringBoot.demo.Repository.Product;
 
 import SpringBoot.demo.Model.Product;
 import org.springframework.data.domain.Page;
