@@ -1,0 +1,432 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "password": "hashedpassword123",
+      "name": "John Doe"
+    },
+    {
+      "id": 2,
+      "email": "alice@gmail.com",
+      "password": "hashedpassword456",
+      "name": "Alice Nguyen"
+    },
+    {
+      "id": 3,
+      "email": "bob@yahoo.com",
+      "password": "hashedpassword789",
+      "name": "Bob Tran"
+    },
+    {
+      "id": 4,
+      "email": "charlie@hotmail.com",
+      "password": "hashedpassword321",
+      "name": "Charlie Le"
+    },
+    {
+      "id": 5,
+      "email": "daisy@company.com",
+      "password": "hashedpassword654",
+      "name": "Daisy Pham"
+    },
+    {
+      "id": 6,
+      "email": "user@example.com",
+      "password": "hashedpassword123",
+      "name": "John Doe"
+    },
+    {
+      "name": "Nguyễn Thịnh",
+      "email": "nhokkinh2301@gmail.com",
+      "password": "123",
+      "id": 7
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "tendm": "Cà phê"
+    },
+    {
+      "id": 2,
+      "tendm": "Trà"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "tensp": "Đường Đen Sữa Đá",
+      "gia": 49000,
+      "category_id": 1,
+      "hinh": "https://product.hstatic.net/1000075078/product/1737357048_uong-den-sua-da_5876b3829fe94af788996ca234a7894f_large.png"
+    },
+    {
+      "id": 2,
+      "tensp": "Bạc Xĩu",
+      "gia": 20000,
+      "category_id": 1,
+      "hinh": "https://product.hstatic.net/1000075078/product/1737357020_bac-xiu-da_43a593b61b8e44379111a9ebb00904d9_large.png"
+    },
+    {
+      "id": 3,
+      "tensp": "The Coffee House Sữa Đá",
+      "gia": 39000,
+      "category_id": 1,
+      "hinh": "https://product.hstatic.net/1000075078/product/1737357037_tch-sua-da_a83639744db94a7a96c1fd6b08e023e1_large.png"
+    },
+    {
+      "id": 4,
+      "tensp": "Bạc Xỉu Nóng",
+      "gia": 39000,
+      "category_id": 1,
+      "hinh": "https://product.hstatic.net/1000075078/product/1737357029_bac-xiu-nong_e0a0732dee144dfda4e3cb43949ce065_large.png"
+    },
+    {
+      "id": 5,
+      "tensp": "Cà Phê Đen Nóng",
+      "gia": 35000,
+      "category_id": 1,
+      "hinh": "https://product.hstatic.net/1000075078/product/1737356979_cf-den-nong_3ce91ffbdc04405b93855cd3b5d5aec2_large.png"
+    },
+    {
+      "id": 6,
+      "tensp": "Latte Almond",
+      "gia": 59000,
+      "category_id": 1,
+      "hinh": "https://files.catbox.moe/5m1ltr.png"
+    },
+    {
+      "id": 7,
+      "tensp": "Latte Caramel",
+      "gia": 59000,
+      "category_id": 1,
+      "hinh": "https://files.catbox.moe/isn6wi.png"
+    },
+    {
+      "id": 8,
+      "tensp": "Latte Hazelnut",
+      "gia": 59000,
+      "category_id": 1,
+      "hinh": "https://files.catbox.moe/bgu6ln.png"
+    },
+    {
+      "id": 9,
+      "tensp": "Latte Coconut",
+      "gia": 59000,
+      "category_id": 1,
+      "hinh": "https://files.catbox.moe/izdmgg.png"
+    },
+    {
+      "id": 10,
+      "tensp": "Latte Bạc Xỉu",
+      "gia": 49000,
+      "category_id": 1,
+      "hinh": "https://files.catbox.moe/swrihi.png"
+    },
+    {
+      "id": 11,
+      "tensp": "Latte Classic",
+      "gia": 55000,
+      "category_id": 1,
+      "hinh": "https://files.catbox.moe/nypx9w.png"
+    },
+    {
+      "id": 12,
+      "tensp": "Trà Sữa Oolong Nướng Sương Sáo",
+      "gia": 55000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/h7ad5w.png"
+    },
+    {
+      "id": 13,
+      "tensp": "Trà Sữa Oolong Tứ Quý Sương Sáo",
+      "gia": 55000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/vi4m1u.png"
+    },
+    {
+      "id": 14,
+      "tensp": "Hồng Trà Sữa Nóng",
+      "gia": 55000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/oejvv8.png"
+    },
+    {
+      "id": 15,
+      "tensp": "Hồng Trà Sữa Trân Châu",
+      "gia": 55000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/jggdzf.png"
+    },
+    {
+      "id": 16,
+      "tensp": "Trà Đen Macchiato",
+      "gia": 55000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/zuax88.png"
+    },
+    {
+      "id": 17,
+      "tensp": "Trà Sữa Oolong BLao",
+      "gia": 39000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/nly5t2.png"
+    },
+    {
+      "id": 18,
+      "tensp": "Hi-Tea Đào Kombucha",
+      "gia": 59000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/qo6dbo.png"
+    },
+    {
+      "id": 19,
+      "tensp": "Hi-Tea Yuzu Kombucha",
+      "gia": 59000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/zanqsv.png"
+    },
+    {
+      "id": 20,
+      "tensp": "Hi-Tea Yuzu Trân Châu",
+      "gia": 49000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/4rj6ue.png"
+    },
+    {
+      "id": 21,
+      "tensp": "Hi-Tea Vải",
+      "gia": 49000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/o79y4a.png"
+    },
+    {
+      "id": 22,
+      "tensp": "Hi-Tea Đào",
+      "gia": 49000,
+      "category_id": 2,
+      "hinh": "https://files.catbox.moe/5dlruz.png"
+    }
+  ],
+  "sizes": [
+    {
+      "id": 1,
+      "tensize": "S",
+      "gia": 0
+    },
+    {
+      "id": 2,
+      "tensize": "M",
+      "gia": 5000
+    },
+    {
+      "id": 3,
+      "tensize": "L",
+      "gia": 10000
+    }
+  ],
+  "toppings": [
+    {
+      "id": 1,
+      "tentopping": "Chân trâu đen",
+      "gia": 5000
+    },
+    {
+      "id": 2,
+      "tentopping": "Chân hoàng kim",
+      "gia": 5000
+    },
+    {
+      "id": 3,
+      "tentopping": "Chân trâu đường đen",
+      "gia": 7000
+    },
+    {
+      "id": 4,
+      "tentopping": "Chân trâu phô mai",
+      "gia": 10000
+    },
+    {
+      "id": 10,
+      "tentopping": "Full topping ",
+      "gia": 35000
+    }
+  ],
+  "ice_options": [
+    {
+      "id": 1,
+      "tenice": "Ít đá"
+    },
+    {
+      "id": 2,
+      "tenice": "Nhiều đá"
+    },
+    {
+      "id": 3,
+      "tenice": "Nóng"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "userEmail": "user@example.com",
+      "userName": "John Doe",
+      "customerInfo": {
+        "name": "John Doe",
+        "phone": "0123456789",
+        "address": "123 Đường ABC, Quận 1, TP.HCM"
+      },
+      "items": [
+        {
+          "id": 1,
+          "name": "Cà phê Đen",
+          "image": "https://example.com/image.jpg",
+          "size": "Vừa",
+          "toppings": [],
+          "ice": "Ít đá",
+          "price": 25000,
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 50000,
+      "paymentMethod": "VietQR",
+      "status": "completed",
+      "createdAt": "2024-01-15T10:30:00Z",
+      "notes": "Giao hàng nhanh"
+    },
+    {
+      "userId": 310770,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "customerInfo": {
+        "name": "Nguyễn Đức Thịnh",
+        "phone": "12345678910",
+        "address": "Hóc Môn, HCM"
+      },
+      "items": [
+        {
+          "id": 4,
+          "name": "Bạc Xỉu Nóng",
+          "image": "https://product.hstatic.net/1000075078/product/1737357029_bac-xiu-nong_e0a0732dee144dfda4e3cb43949ce065_large.png",
+          "size": "Vừa",
+          "toppings": [],
+          "ice": "Ít đá",
+          "price": 39000,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 64000,
+      "paymentMethod": "VietQR",
+      "status": "completed",
+      "createdAt": "2025-08-11T03:18:23.764Z",
+      "notes": "",
+      "completedAt": "2025-08-11T03:18:24.894Z",
+      "id": 2
+    },
+    {
+      "userId": 415315,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "customerInfo": {
+        "name": "Nguyễn Đức Thịnh",
+        "phone": "12345678910",
+        "address": "áđá"
+      },
+      "items": [
+        {
+          "id": 4,
+          "name": "Bạc Xỉu Nóng",
+          "image": "https://product.hstatic.net/1000075078/product/1737357029_bac-xiu-nong_e0a0732dee144dfda4e3cb43949ce065_large.png",
+          "size": "Vừa",
+          "toppings": [],
+          "ice": "Ít đá",
+          "price": 39000,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 64000,
+      "paymentMethod": "VietQR",
+      "status": "completed",
+      "createdAt": "2025-08-11T03:19:06.204Z",
+      "notes": "",
+      "completedAt": "2025-08-11T03:19:07.409Z",
+      "id": 3
+    }
+  ],
+  "ratings": [
+    {
+      "id": 1,
+      "productId": 1,
+      "userId": 7,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 5,
+      "createdAt": "2025-08-11T03:20:00.000Z"
+    },
+    {
+      "productId": 1,
+      "userId": 273462,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 5,
+      "createdAt": "2025-08-11T03:48:35.100Z",
+      "id": 2
+    },
+    {
+      "productId": 1,
+      "userId": 32307,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 5,
+      "createdAt": "2025-08-11T03:49:16.053Z",
+      "id": 3
+    },
+    {
+      "productId": 7,
+      "userId": 680257,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 5,
+      "createdAt": "2025-08-11T03:50:33.372Z",
+      "id": 4
+    },
+    {
+      "productId": 3,
+      "userId": 756786,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 2,
+      "createdAt": "2025-08-11T03:53:42.388Z",
+      "id": 5
+    },
+    {
+      "productId": 22,
+      "userId": 877590,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 4,
+      "createdAt": "2025-08-11T03:59:15.476Z",
+      "id": 6
+    },
+{
+      "productId": 22,
+      "userId": 877590,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 5,
+      "createdAt": "2025-08-11T03:59:15.476Z",
+      "id": 6
+    },
+{
+      "productId": 22,
+      "userId": 877590,
+      "userEmail": "nhokkinh2301@gmail.com",
+      "userName": "Nguyễn Thịnh",
+      "rating": 4,
+      "createdAt": "2025-08-11T03:59:15.476Z",
+      "id": 6
+    }
+  ]
+}

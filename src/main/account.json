@@ -1,0 +1,31 @@
+// Register Response
+{
+  "success": true,
+  "message": "Đăng ký thành công",
+  "data": {
+    "id": 1,
+    "username": "john_doe",
+    "email": "john@example.com",
+    "role": "USER"
+  }
+},
+
+// Login Response
+{
+  "success": true,
+  "message": "Đăng nhập thành công",
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "tokenType": "Bearer",
+    "expiresIn": 900,
+    "user": {
+      "id": 1,
+      "username": "john_doe",
+      "email": "john@example.com",
+      "role": "USER"
+    }
+  },
+"accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVVNFUiIsInRva2VuVHlwZSI6ImFjY2VzcyIsInVzZXJJZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwic3ViIjoidGVzdHVzZXIiLCJpYXQiOjE3NTk3OTkyNzAsImV4cCI6MTc1OTgwMTA3MH0.HP4qlECnLZhM7P-kblNaqfI95xabsndB0LiiXlRyuzA",
+"refreshToken": "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlblR5cGUiOiJyZWZyZXNoIiwidXNlcklkIjoxLCJzdWIiOiJ0ZXN0dXNlciIsImlhdCI6MTc1OTc5OTI3MCwiZXhwIjoxNzYwNDA0MDcwfQ.rEH1RHC8QplYXTYxJpawNRPz2_fcEw0AjJUOswJObvo"
+}
